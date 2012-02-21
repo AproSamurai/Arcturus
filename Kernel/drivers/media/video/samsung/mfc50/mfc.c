@@ -85,8 +85,14 @@ static int mfc_open(struct inode *inode, struct file *file)
 		}
 
 #ifdef CONFIG_DVFS_LIMIT
+<<<<<<< HEAD
 		s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_1, L7); //400MHz
 #endif
+=======
+
+		s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_1, L6); //400MHz
+	#endif
+>>>>>>> 30593ec... Corrected steps 1.1-1.3. To be reviewed.
 		clk_enable(mfc_sclk);
 
 		mfc_load_firmware(mfc_fw_info->data, mfc_fw_info->size);
