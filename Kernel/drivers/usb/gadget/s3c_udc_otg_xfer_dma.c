@@ -1400,3 +1400,4 @@ static void s3c_ep0_kick(struct s3c_udc *dev, struct s3c_ep *ep)
 	}
 }
 
+

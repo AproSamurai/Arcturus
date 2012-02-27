@@ -430,20 +430,11 @@ static int s3c_udc_power(struct s3c_udc *dev, char en)
 }
 void s5p_set_otg_dvfs(int enable)
 {
-<<<<<<< HEAD
-	
-  if (enable) {
-                s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_8,L5); //800MHz lock
-        } else {
-                s5pv210_unlock_dvfs_high_level(DVFS_LOCK_TOKEN_8);
-        }
-=======
 	if (enable) {
 		s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_8,L4); //800MHz lock
 	} else {
 		s5pv210_unlock_dvfs_high_level(DVFS_LOCK_TOKEN_8);
 	}
->>>>>>> 30593ec... Corrected steps 1.1-1.3. To be reviewed.
 
 }
 int s3c_vbus_enable(struct usb_gadget *gadget, int enable)
@@ -453,15 +444,8 @@ int s3c_vbus_enable(struct usb_gadget *gadget, int enable)
 
 #if 0
 	// USB Gadget entry point
+
 	if (enable) {
-<<<<<<< HEAD
-  		dev_info(&gadget->dev, "USB udc %d,%d lock\n", dev->udc_enabled, enable);
-  		s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_8,L5); //800MHz lock
- 	} else {
-  		dev_info(&gadget->dev, "USB udc %d,%d unlock\n", dev->udc_enabled, enable);
-  		s5pv210_unlock_dvfs_high_level(DVFS_LOCK_TOKEN_8);
- 	}
-=======
 		dev_info(&gadget->dev, "USB udc %d,%d lock\n", dev->udc_enabled, enable);
 		s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_8,L4); //800MHz lock
 	} else {
@@ -470,7 +454,6 @@ int s3c_vbus_enable(struct usb_gadget *gadget, int enable)
 	}
 
 	 
->>>>>>> 30593ec... Corrected steps 1.1-1.3. To be reviewed.
 #endif
 
 	if (dev->udc_enabled != enable) {
@@ -997,6 +980,7 @@ static const struct usb_gadget_ops s3c_udc_ops = {
 };
 
 static void nop_release(struct device *dev)
+
 {
 	DEBUG("%s\n", __func__);
 }
@@ -1383,3 +1367,4 @@ module_exit(udc_exit);
 MODULE_DESCRIPTION(DRIVER_DESC);
 MODULE_AUTHOR("Samsung");
 MODULE_LICENSE("GPL");
+
