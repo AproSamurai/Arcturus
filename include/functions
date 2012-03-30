@@ -1,0 +1,50 @@
+#!/bin/bash
+
+find_toolchain() {
+DEVICEPATH=device/samsung/epicmtd
+TOOLCHAINPATH=/toolchain/arm-eabi-4.4.3/bin
+CMSEARCHPATH="../../.."
+unset CMBASEPATH
+
+# Detect kernel branch from git and use CM path from environment if it exists
+[ -n "$CMPATH" ] && CMSEARCHPATH="$CMPATH $CMSEARCHPATH"
+
+# Detect host OS
+case "`uname`" in 
+    Linux)
+        PREBUILTARCH=linux-x86
+        ;;
+    Darwin)
+        PREBUILTARCH=darwin-x86
+        ;;
+esac
+
+# Find CM path for toolchain and target for kernel output
+for p in $CMSEARCHPATH; do
+    #echo "Checking $p/prebuilt/$PREBUILTARCH/$TCPATH"
+    if [ -d $p/prebuilt/$PREBUILTARCH/$TCPATH ]; then
+        cd $p
+        CMBASEPATH=`pwd`
+        cd - > /dev/null
+        TCPATH=${CMBASEPATH}/prebuilt/$PREBUILTARCH/$TOOLCHAINPATH
+        DPATH=${CMBASEPATH}/${DEVICEPATH}
+        break
+    fi
+done    
+
+# Sanity Check
+if [ -z "$CMBASEPATH" ]; then
+    echo "ERROR: Base CM path not specified.  You should probably set it in your ~/.bashrc."
+    echo "    Example:"
+    echo "    echo \"export CMPATH=/path/to/your/cmrepo\" >> ~/.bashrc"
+    exit 255
+fi
+}
+
+# Verbose cp
+vcp() {
+echo cp $@
+if ! cp $@; then
+  exit 1
+fi
+}
