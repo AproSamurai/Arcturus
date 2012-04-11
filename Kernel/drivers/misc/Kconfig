@@ -465,4 +465,10 @@ config LEVEL
         help
           Say Y to enable debug level I/F support.
 
+config BLX
+	bool "Support for Battery Life eXtender"
+	default y
+	help
+	 Say Y here to enable Battery Life eXtender
+
 endif # MISC_DEVICES
