@@ -12,13 +12,12 @@
 TARGET_LOCALE="vzw"
 
 #uncomment to add custom version string
+CUSTOMVERSION="Arcturus-Color"
 export KBUILD_BUILD_VERSION="$CUSTOMVERSION"
 DEFCONFIG_STRING=cyanogenmod_epicmtd_defconfig
 DEVICEPATH=device/samsung/epicmtd
 TOOLCHAINPATH=/toolchain/arm-eabi-4.4.3/bin
-LOCALVERSION_STRING="-$CUSTOMVERSION"
-CUSTOMVERSION="Shuriken-2.0"
-
+LOCALVERSION="-$CUSTOMVERSION"
 
 #TOOLCHAIN=`pwd`/toolchains/android-toolchain-4.4.3/bin
 #TOOLCHAIN_PREFIX=arm-linux-androideabi-
@@ -136,9 +135,8 @@ BUILD_KERNEL()
 		export KDIR=`pwd`
 		#make clean mrproper
 		make ARCH=arm $DEFCONFIG_STRING
-
-		make -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX 2>&1 | tee make.out
-#		make V=1 -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX 2>&1 | tee make.out
+		make -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX LOCALVERSION=$LOCALVERSION_STRING 2>&1 | tee make.out
+#		make V=1 -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX LOCALVERSION=$LOCALVERSION_STRING 2>&1 | tee make.out
 		cp arch/arm/boot/zImage /home/steven/Android/Arcturus/tools/kexec-cwm-test-zip
 		cd /home/steven/Android/Arcturus/
 		./make-kexec-cwm-test-zip.sh
