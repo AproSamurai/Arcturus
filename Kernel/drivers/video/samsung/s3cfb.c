@@ -39,11 +39,11 @@
 #endif
 #include "s3cfb.h"
 #include "logo_rgb24_wvga_portrait.h"
-//#ifdef CONFIG_FB_S3C_MDNIE
+#ifdef CONFIG_FB_S3C_MDNIE
 #include "s3cfb_mdnie.h"
 #include <linux/delay.h>
 #include <mach/regs-clock.h>
-//#endif
+#endif
 #include <plat/media.h>
 #define BOOT_FB_WINDOW	0
 
