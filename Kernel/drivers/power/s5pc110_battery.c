@@ -45,6 +45,10 @@
 #include <linux/android_alarm.h>
 #include "s5pc110_battery.h"
 
+#ifdef CONFIG_BLX
+#include <linux/blx.h>
+#endif
+
 #define BAT_POLLING_INTERVAL	10000
 #define BAT_WAITING_INTERVAL	20000	/* 20 sec */
 #define BAT_WAITING_COUNT	(BAT_WAITING_INTERVAL / BAT_POLLING_INTERVAL)
@@ -897,6 +901,15 @@ static void s3c_bat_discharge_reason(struct chg_data *chg)
 
 	if (chg->bat_info.batt_is_full)
 		chg->bat_info.dis_reason |= DISCONNECT_BAT_FULL;
+
+#ifdef CONFIG_BLX
+  if (get_charginglimit() != MAX_CHARGINGLIMIT && chg->bat_info.batt_soc >= get_charginglimit())
+  {
+  chg->bat_info.dis_reason |= DISCONNECT_BAT_FULL;
+
+  chg->bat_info.batt_is_full = true;
+  }
+#endif
 
 	if (chg->bat_info.batt_health != POWER_SUPPLY_HEALTH_GOOD)
 		chg->bat_info.dis_reason |=
