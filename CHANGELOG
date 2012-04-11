@@ -1,0 +1,11 @@
+Voodoo Sound v10 by Supercurio
+Voodoo Color by Supercurio
+Optimized compiler flags by netarchy and Ezekeel
+Live OC (on the fly bus overclock) by Ezekeel (Use NSTools app, not voltage control)
+Custom Undervolt by Ezekeel (Use NSTools app, not voltage control)
+Misc. bugfixes
+DRAM frequency also scaled to OC value (may be pulled)
+Battery Life eXtender (BLX) v1 by Ezekeel
+OS tools compiled with O3
+Swappiness set to 10 from 60
+Voodoo mDNIe (keeps text sharp and backgrounds don't look like crap)

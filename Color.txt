@@ -1,0 +1,155 @@
+make  
+************************************************************
+* EXPORT VARIABLE                                          *
+************************************************************
+PRJROOT=/home/steven/Android/Arcturus
+PROJECT_NAME=SPH-D700
+HW_BOARD_REV=03
+LD_LIBRARY_PATH=.:/../lib
+************************************************************
+
+************************************************************
+* MAKE PACKAGES                                            *
+************************************************************
+* 1. kernel : zImage
+* 2. modules
+************************************************************
+************************************************************
+* Removing old zImage                                      *
+************************************************************
+* zImage removed
+************************************************************
+
+************************************************************
+* BUILD_KERNEL                                             *
+************************************************************
+
+~/Android/Arcturus/Kernel ~/Android/Arcturus
+#
+# configuration written to .config
+#
+scripts/kconfig/conf -s arch/arm/Kconfig
+  CHK     include/linux/version.h
+  CHK     include/generated/kernelversion.h
+  CHK     include/generated/utsrelease.h
+  UPD     include/generated/utsrelease.h
+make[1]: `include/generated/mach-types.h' is up to date.
+  CALL    scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CC      init/version.o
+  LD      init/built-in.o
+  CC      arch/arm/mach-s5pv210/aries-panel.o
+arch/arm/mach-s5pv210/aries-panel.c:72:36: warning: "CONFIG_MACH_FORTE" is not defined
+  LD      arch/arm/mach-s5pv210/built-in.o
+  CC      kernel/module.o
+  CC      sound/soc/codecs/crespo/wm8994_samsung.o
+sound/soc/codecs/crespo/wm8994_samsung.c: In function 'wm8994_i2c_probe':
+sound/soc/codecs/crespo/wm8994_samsung.c:3074: warning: ignoring return value of 'sysfs_create_group', declared with attribute warn_unused_result
+sound/soc/codecs/crespo/wm8994_samsung.c: In function 'wm8994_add_i2c_device':
+sound/soc/codecs/crespo/wm8994_samsung.c:3129: warning: label 'err_driver' defined but not used
+sound/soc/codecs/crespo/wm8994_samsung.c: At top level:
+sound/soc/codecs/crespo/wm8994_samsung.c:807: warning: 'wm8994_set_bias_level' defined but not used
+sound/soc/codecs/crespo/wm8994_samsung.c:1127: warning: 'wm8994_digital_mute' defined but not used
+  CC      kernel/kexec.o
+  CC      sound/soc/codecs/crespo/wm8994_herring.o
+sound/soc/codecs/crespo/wm8994_herring.c:670: warning: excess elements in array initializer
+sound/soc/codecs/crespo/wm8994_herring.c:670: warning: (near initialization for 'playback_gain_table')
+sound/soc/codecs/crespo/wm8994_herring.c:675: warning: excess elements in array initializer
+sound/soc/codecs/crespo/wm8994_herring.c:675: warning: (near initialization for 'playback_gain_table')
+sound/soc/codecs/crespo/wm8994_herring.c:680: warning: excess elements in array initializer
+sound/soc/codecs/crespo/wm8994_herring.c:680: warning: (near initialization for 'playback_gain_table')
+sound/soc/codecs/crespo/wm8994_herring.c:685: warning: excess elements in array initializer
+sound/soc/codecs/crespo/wm8994_herring.c:685: warning: (near initialization for 'playback_gain_table')
+sound/soc/codecs/crespo/wm8994_herring.c:690: warning: excess elements in array initializer
+sound/soc/codecs/crespo/wm8994_herring.c:690: warning: (near initialization for 'playback_gain_table')
+  CC      sound/soc/codecs/crespo/wm8994_voodoo.o
+  LD      kernel/built-in.o
+  LD      sound/soc/codecs/snd-soc-wm8994.o
+  LD      sound/soc/codecs/snd-soc-wm-hubs.o
+  LD      sound/soc/codecs/built-in.o
+  LD      sound/soc/built-in.o
+  LD      sound/built-in.o
+  LD      vmlinux.o
+  MODPOST vmlinux.o
+WARNING: modpost: Found 9 section mismatch(es).
+To see full details build your kernel with:
+'make CONFIG_DEBUG_SECTION_MISMATCH=y'
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  LD      init/built-in.o
+  LD      .tmp_vmlinux1
+  KSYM    .tmp_kallsyms1.S
+  AS      .tmp_kallsyms1.o
+  LD      .tmp_vmlinux2
+  KSYM    .tmp_kallsyms2.S
+  AS      .tmp_kallsyms2.o
+  LD      vmlinux
+  SYSMAP  System.map
+  SYSMAP  .tmp_System.map
+  OBJCOPY arch/arm/boot/Image
+  Building modules, stage 2.
+  MODPOST 3 modules
+  Kernel: arch/arm/boot/Image is ready
+  XZKERN  arch/arm/boot/compressed/piggy.xzkern
+  SHIPPED arch/arm/boot/compressed/lib1funcs.S
+  SHIPPED arch/arm/boot/compressed/ashldi3.S
+  AS      arch/arm/boot/compressed/lib1funcs.o
+  AS      arch/arm/boot/compressed/ashldi3.o
+  CC      drivers/misc/vibetonz/vibrator.mod.o
+  CC      drivers/net/wireless/bcm4329/bcm4329.mod.o
+  CC      drivers/net/wireless/wimax/cmc7xx_sdio.mod.o
+  LD [M]  drivers/net/wireless/wimax/cmc7xx_sdio.ko
+  LD [M]  drivers/net/wireless/bcm4329/bcm4329.ko
+  LD [M]  drivers/misc/vibetonz/vibrator.ko
+  AS      arch/arm/boot/compressed/piggy.xzkern.o
+  LD      arch/arm/boot/compressed/vmlinux
+  OBJCOPY arch/arm/boot/zImage
+  Kernel: arch/arm/boot/zImage is ready
+cp ./Kernel/arch/arm/boot/zImage tools/kexec-cwm-test-zip/
+  adding: kexec (deflated 35%)
+  adding: META-INF/ (stored 0%)
+  adding: META-INF/CERT.SF (deflated 33%)
+  adding: META-INF/com/ (stored 0%)
+  adding: META-INF/com/google/ (stored 0%)
+  adding: META-INF/com/google/android/ (stored 0%)
+  adding: META-INF/com/google/android/update-binary (deflated 35%)
+  adding: META-INF/com/google/android/updater-script (deflated 69%)
+  adding: META-INF/CERT.RSA (deflated 33%)
+  adding: zImage (deflated 0%)
+
+SUCCESS: boot_zImage.zip complete.
+
+Suggested next steps to test your local kernel build...
+    adb push boot_zImage.zip /sdcard/
+    adb reboot recovery
+Then fakeflash boot_zImage.zip in CWM.
+
+Already on 'CM9'
+Your branch is ahead of 'origin/CM9' by 1 commit.
+create ramdisk.img
+create ramdisk-recovery.img
+removing old boot.img
+create boot.img
+cleaning up temp files:
+* rm -f ramdisk-kernel.img
+* rm -f ramdisk-recovery.cpio
+* rm -f ramdisk-recovery.img
+boot.img created successfully
+  adding: bml_over_mtd (deflated 37%)
+  adding: bml_over_mtd.sh (deflated 59%)
+  adding: boot.img (deflated 0%)
+  adding: busybox (deflated 27%)
+  adding: erase_image (deflated 32%)
+  adding: flash_image (deflated 35%)
+  adding: META-INF/ (stored 0%)
+  adding: META-INF/com/ (stored 0%)
+  adding: META-INF/com/google/ (stored 0%)
+  adding: META-INF/com/google/android/ (stored 0%)
+  adding: META-INF/com/google/android/update-binary (deflated 35%)
+  adding: META-INF/com/google/android/updater-script (deflated 71%)
+  adding: META-INF/com/android/ (stored 0%)
+  adding: META-INF/com/android/metadata (deflated 7%)
+~/Android/Arcturus
+Total compile time is 25 seconds 
