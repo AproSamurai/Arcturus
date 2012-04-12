@@ -146,9 +146,10 @@ BUILD_KERNEL()
 		./create_boot.img.sh cm		
 		cp /home/steven/Android/create_boot.img/boot.img /home/steven/Android/zipcreation/Arcturus		
 		cd /home/steven/Android/zipcreation/Arcturus
-		rm -f Arcturus.zip		
-		zip -r Arcturus *
-		cp /home/steven/Android/zipcreation/Arcturus/Arcturus.zip /home/steven/Dropbox/Public/Arcturus/
+		rm -f Arcturus.zip
+		rm -f ArcturusColor.zip		
+		zip -r ArcturusColor.zip *
+		cp /home/steven/Android/zipcreation/Arcturus/ArcturusColor.zip /home/steven/Dropbox/Public/Arcturus/
 		cp /home/steven/Android/Arcturus/boot_zImage.zip /home/steven/Dropbox/Public/Arcturus/
 
                 
