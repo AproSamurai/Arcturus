@@ -12,7 +12,7 @@
 TARGET_LOCALE="vzw"
 
 #uncomment to add custom version string
-CUSTOMVERSION="Arcturus-Color"
+CUSTOMVERSION="Arcturus"
 export KBUILD_BUILD_VERSION="$CUSTOMVERSION"
 DEFCONFIG_STRING=cyanogenmod_epicmtd_defconfig
 DEVICEPATH=device/samsung/epicmtd
@@ -146,7 +146,8 @@ BUILD_KERNEL()
 		./create_boot.img.sh cm		
 		cp /home/steven/Android/create_boot.img/boot.img /home/steven/Android/zipcreation/Arcturus		
 		cd /home/steven/Android/zipcreation/Arcturus
-		rm -f Arcturus.zip		
+		rm -f Arcturus.zip
+		rm -f ArcturusColor.zip		
 		zip -r Arcturus *
 		cp /home/steven/Android/zipcreation/Arcturus/Arcturus.zip /home/steven/Dropbox/Public/Arcturus/
 		cp /home/steven/Android/Arcturus/boot_zImage.zip /home/steven/Dropbox/Public/Arcturus/
