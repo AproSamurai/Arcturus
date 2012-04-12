@@ -450,7 +450,7 @@ void input_event(struct input_dev *dev,
 #endif //CONFIG_KERNEL_DEBUG_SEC
 
 #ifdef USE_PSEUDO_HARD_RESET
-<<<<<<< HEAD
+
   if((dev->name) != 0) {
     if(strcmp(dev->name,"s3c-keypad")==0)
     {
@@ -458,7 +458,7 @@ void input_event(struct input_dev *dev,
       input_chk_hardreset(code, value);
     }
   }
-=======
+
 	if((dev->name) != 0) {
 		if(strcmp(dev->name,"s3c-keypad")==0 ||
 			strcmp(dev->name,"victory-keypad") == 0)
@@ -467,7 +467,7 @@ void input_event(struct input_dev *dev,
 			input_chk_hardreset(code, value);
 		}
 	}
->>>>>>> 932e2ca... Made identical to nubecoders input files.
+
 #endif
 
 	#ifdef CONFIG_MACH_ATLAS
