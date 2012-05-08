@@ -79,6 +79,7 @@ static u32 keymask[KEYPAD_COLUMNS];
 static u32 prevmask[KEYPAD_COLUMNS];
 
 static int in_sleep = 0;
+static bool is_led_on;
 
 #define COLUMN_DELAY_DEFAULT KEYPAD_DELAY
 #define COLUMN_DELAY_MAX     (1000000/(HZ*KEYPAD_COLUMNS))
@@ -366,7 +367,7 @@ static irqreturn_t s3c_slide_isr(int irq, void *dev_id)
   input_sync(dev); //hojun_kim
 
   //hojun_kim 100511[
-  if(!key_status)
+  if(!key_status || !is_led_on)
   {
     keypad_led_onoff(0);
   }
@@ -478,10 +479,12 @@ static ssize_t key_led_control(struct device *dev, struct device_attribute *attr
 
                           if(data == 1)
                           {
+                                is_led_on = true;
                                 keypad_led_onoff(1);
                           }
                           else if(data == 2)
                           {
+                                is_led_on = false;
                                 keypad_led_onoff(0);
                           }
 
@@ -676,6 +679,7 @@ static int __init s3c_keypad_probe(struct platform_device *pdev)
 #endif
 
 #ifndef CONFIG_S5PV210_CRESPO_DELTA
+        is_led_on = true;
         s3c_slidegpio_isr_setup((void *)s3c_keypad);
 #endif
        
