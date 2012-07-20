@@ -470,6 +470,7 @@ static int __devinit tl2796_probe(struct spi_device *spi)
 	}
 
 	lcd->bl_dev->props.max_brightness = 255;
+	lcd->bl_dev->props.brightness = lcd->bl;
 
 	lcd->lcd_dev = lcd_device_register("s5p_lcd",
 			&spi->dev, lcd, &s5p_lcd_ops);
