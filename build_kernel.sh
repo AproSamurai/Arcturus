@@ -15,15 +15,15 @@ TARGET_LOCALE="vzw"
 export KBUILD_BUILD_VERSION="$CUSTOMVERSION"
 DEFCONFIG_STRING=cyanogenmod_epicmtd_defconfig
 DEVICEPATH=device/samsung/epicmtd
-TOOLCHAINPATH=/toolchain/arm-eabi-4.4.3/bin
+#TOOLCHAINPATH=/toolchain/arm-eabi-4.4.3/bin
 LOCALVERSION_STRING="-$CUSTOMVERSION"
 CUSTOMVERSION="Shuriken-2.0"
 
 
 #TOOLCHAIN=`pwd`/toolchains/android-toolchain-4.4.3/bin
 #TOOLCHAIN_PREFIX=arm-linux-androideabi-
-TOOLCHAIN=/home/steven/Android/android_prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin
-TOOLCHAIN_PREFIX=arm-eabi-
+TOOLCHAIN=/home/steven/Android/arm-linux-androideabi-4.6/bin
+TOOLCHAIN_PREFIX=arm-linux-androideabi-
 
 
 # Detect host OS
