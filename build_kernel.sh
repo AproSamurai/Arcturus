@@ -17,7 +17,7 @@ DEFCONFIG_STRING=cyanogenmod_epicmtd_defconfig
 DEVICEPATH=device/samsung/epicmtd
 #TOOLCHAINPATH=/toolchain/arm-eabi-4.4.3/bin
 LOCALVERSION_STRING="-$CUSTOMVERSION"
-CUSTOMVERSION="Shuriken-2.0"
+CUSTOMVERSION="Arcturus"
 
 
 #TOOLCHAIN=`pwd`/toolchains/android-toolchain-4.4.3/bin
