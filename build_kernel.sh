@@ -150,8 +150,8 @@ BUILD_KERNEL()
 		cd /home/steven/Android/zipcreation/Arcturus
 		rm -f Arcturus.zip		
 		zip -r Arcturus *
-		cp /home/steven/Android/zipcreation/Arcturus/Arcturus.zip /home/steven/Dropbox/Public/Arcturus/
-		cp /home/steven/Android/Arcturus/boot_zImage.zip /home/steven/Dropbox/Public/Arcturus/
+		cp /home/steven/Android/zipcreation/Arcturus/Arcturus.zip /home/steven/Dropbox/Public/Arcturus/Rising
+		cp /home/steven/Android/Arcturus/boot_zImage.zip /home/steven/Dropbox/Public/Arcturus/Rising
 
                 
 	popd
